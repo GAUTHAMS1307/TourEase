@@ -10,6 +10,7 @@ import {
 
 import { FavoritesProvider } from "./context/FavoritesContext";
 import { ThemeProvider } from "./context/ThemeContext";
+import { ToastProvider } from "./context/ToastContext";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Home2 from "./pages/Home2";
@@ -29,6 +30,7 @@ import Terms from "./pages/Terms";
 import HelpCenter from "./pages/HelpCenter";
 import NotFound from "./components/NotFound";
 import TripPlanner from './pages/TripPlanner';
+import SmartTripPlanner from './pages/SmartTripPlanner';
 import Footer from "./components/Footer";
 import WatchDemoPage from './pages/DemoSection';
 
@@ -79,6 +81,7 @@ function AppRoutes() {
           <Route path="/oauth-success" element={<OAuthSuccess />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/trip-planner" element={<TripPlanner />} />
+          <Route path="/smart-trip-planner" element={<SmartTripPlanner />} />
         </Routes>
       </div>
       {showNavigation && <Footer />}
@@ -103,11 +106,13 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <FavoritesProvider>
-        <Router>
-          <AppRoutes />
-        </Router>
-      </FavoritesProvider>
+      <ToastProvider>
+        <FavoritesProvider>
+          <Router>
+            <AppRoutes />
+          </Router>
+        </FavoritesProvider>
+      </ToastProvider>
     </ThemeProvider>
   );
 }

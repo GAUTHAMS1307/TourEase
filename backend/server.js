@@ -9,6 +9,7 @@ const tripRouter = require('./routes/tripRoutes');
 const itineraryRoutes = require('./routes/itineraryRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const weatherRoutes = require('./routes/weatherRoutes');
+const smartPlannerRoutes = require('./routes/smartPlannerRoutes');
 
 // Connect to MongoDB
 connectDB()
@@ -50,6 +51,7 @@ app.use('/api/trip', tripRouter);
 app.use('/api/itinerary', itineraryRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/weather', weatherRoutes);
+app.use('/api/smart-planner', smartPlannerRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
