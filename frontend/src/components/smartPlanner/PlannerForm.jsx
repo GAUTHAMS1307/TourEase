@@ -20,6 +20,13 @@ export default function PlannerForm({
   onToggleInterest,
   onSubmit,
 }) {
+  const interestTagBaseClass =
+    'px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60';
+  const selectedInterestTagClass =
+    'bg-orange-500 text-white border-orange-500 shadow-md shadow-orange-500/25 hover:bg-orange-600 hover:border-orange-600 active:scale-95';
+  const unselectedInterestTagClass =
+    'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-500 hover:border-teal-400 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-300 hover:bg-teal-50 dark:hover:bg-gray-700 active:scale-95';
+
   return (
     <form
       onSubmit={(e) => {
@@ -158,11 +165,7 @@ export default function PlannerForm({
                 key={interest}
                 type="button"
                 onClick={() => onToggleInterest(interest)}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60 ${
-                  selected
-                    ? 'bg-orange-500 text-white border-orange-500 shadow-md shadow-orange-500/25 hover:bg-orange-600 hover:border-orange-600 active:scale-95'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-500 hover:border-teal-400 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-300 hover:bg-teal-50 dark:hover:bg-gray-700 active:scale-95'
-                }`}
+                className={`${interestTagBaseClass} ${selected ? selectedInterestTagClass : unselectedInterestTagClass}`}
               >
                 {interest}
               </button>
